@@ -3,7 +3,7 @@ A simple todo liste in ocaml
 
 #How to use
 Launch the program with this command :
-> ocaml Mains.ml
+> ocaml Main.ml
 
 then you can use these instructions to interract with the program :
 * 0 -> exit
