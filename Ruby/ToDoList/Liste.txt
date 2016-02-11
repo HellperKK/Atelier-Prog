@@ -1,0 +1,5 @@
+--- !ruby/object:Liste
+contenu:
+- !ruby/object:Tache
+  tache: '"coucou"'
+  statut: 0
