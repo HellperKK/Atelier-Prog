@@ -1,7 +1,7 @@
 def charCountInit(x)
 	x = x.chars.sort
 	a = charCountRec(x)
-	a.each{|i| puts "Le carcatere #{i[0]} est present #{i[1]} fois"}
+	a.each{|i| puts "Le caractere #{i[0]} est present #{i[1]} fois"}
 end
 def charCountRec(x)
 	if x == []
