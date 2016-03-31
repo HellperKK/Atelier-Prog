@@ -5,4 +5,4 @@ A simple NPI in ocaml.
 Launch the program with this command :
 > ocaml Mains.ml "an expession in NPI here"
 
-With ni expression given a default expression is given.
+With no expression given a default expression is given.
