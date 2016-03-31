@@ -69,4 +69,10 @@ def main(str)
 		0
 	end
 end
-puts main("1 + 3 * (2 + 5 * (4 - 2)) / 5")
+expression = ARGV
+if expression != []
+	puts main(expression[0])
+else
+	puts main("1 + 3 * (2 + 5 * (4 - 2)) / 5")	
+end
+puts 

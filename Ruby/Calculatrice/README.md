@@ -1,6 +1,6 @@
 # Calculatrice en ruby
-Une calculatrice en ruby (WIP).
+Une calculatrice en ruby.
 
 #Utilisation
 Utiliser la commande :
-> [ruby] Main.rb
+> [ruby] Main.rb "l'expression à evaluer"
