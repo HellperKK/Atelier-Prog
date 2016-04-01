@@ -10,7 +10,7 @@ end
 class Curseur < ModI
 	attr_reader :x
 	attr_reader :y
-	def initialize (x, y)
+	def initialize(x, y)
 		super(x, y)
 	end
 	def update(x, y)
@@ -20,7 +20,7 @@ class Curseur < ModI
 end
 class Spri < Gosu::Image
 	attr_reader :modi
-	def initialize (window, img, modi)
+	def initialize(window, img, modi)
 		super(window, img, true)
 		@modi = modi
 	end
@@ -30,7 +30,7 @@ class Spri < Gosu::Image
 	def draw
 		super(@modi.x, @modi.y,0)
 	end
-	def contient (contenu)
+	def contient(contenu)
 		milieu_x = contenu.modi.x + (contenu.width/2)
 		milieu_y = contenu.modi.y + (contenu.height/2)
 		#(milieu_x > @modi.x and milieu_x < (@modi.x + self.width) and milieu_y > @modi.y and milieu_y < (@modi.y + self.height))
