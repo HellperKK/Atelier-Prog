@@ -1,12 +1,6 @@
 require 'gosu'
-class ModI
-	attr_reader :x
-	attr_reader :y
-	def initialize(x,y)
-		@x = x
-		@y = y
-	end
-end
+ModI = Struct.new(:x, :y)
+
 class Curseur < ModI
 	attr_reader :x
 	attr_reader :y
