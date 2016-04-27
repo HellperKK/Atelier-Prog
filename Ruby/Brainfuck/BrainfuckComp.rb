@@ -1,29 +1,33 @@
+def b_to_r(char, compteur)
+	case char
+		when ">"
+			"pointeur += #{compteur}\n"
+		when "<"
+			"pointeur -= #{compteur}\n"
+		when "+"
+			"memoire[pointeur] += #{compteur}\n"
+		when "-"
+			"memoire[pointeur] -= #{compteur}\n" 
+		when "."
+			"#{compteur}.times{print memoire[pointeur].chr}\n" 
+		when ","
+			"#{compteur}.times{memoire[pointeur] = $stdin.gets[0].ord}\n" 
+		when "["
+			("while (memoire[pointeur] != 0)\n" * compteur)
+		when "]"
+			("end\n" * compteur)
+		else 
+			""
+		end
+end
+
 def main(arg, pointeur = 0, char = " ", compteur = 1)
-	if pointeur > arg.length
-		""
+	if pointeur == arg.length
+		b_to_r(char, compteur)
 	elsif arg[pointeur] == char
 		main(arg, pointeur + 1, char, compteur + 1)
 	else
-		case char
-		when ">"
-			"pointeur += #{compteur}\n" + main(arg, pointeur + 1, arg[pointeur] , 1)
-		when "<"
-			"pointeur -= #{compteur}\n" + main(arg, pointeur + 1, arg[pointeur] , 1)
-		when "+"
-			"memoire[pointeur] += #{compteur}\n" + main(arg, pointeur + 1, arg[pointeur] , 1)
-		when "-"
-			"memoire[pointeur] -= #{compteur}\n" + main(arg, pointeur + 1, arg[pointeur] , 1)
-		when "."
-			"#{compteur}.times{print memoire[pointeur].chr}\n" + main(arg, pointeur + 1, arg[pointeur] , 1)
-		when ","
-			"#{compteur}.times{memoire[pointeur] = $stdin.gets[0].ord}\n" + main(arg, pointeur + 1, arg[pointeur] , 1)
-		when "["
-			("while (memoire[pointeur] != 0)\n" * compteur) + main(arg, pointeur + 1, arg[pointeur] , 1)
-		when "]"
-			("end\n" * compteur) + main(arg, pointeur + 1, arg[pointeur] , 1)
-		else 
-			main(arg, pointeur + 1, arg[pointeur] , 1)
-		end
+		b_to_r(char, compteur) + main(arg, pointeur + 1, arg[pointeur] , 1)
 	end
 end
 
