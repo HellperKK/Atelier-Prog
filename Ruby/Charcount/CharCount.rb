@@ -15,4 +15,10 @@ def charCountRec(x)
 		[[char, compteur]] + charCountRec(x[compteur..-1])
 	end
 end
-charCountInit("portez ce vieux whisky au juge blond qui fume")
+#charCountInit("portez ce vieux whisky au juge blond qui fume")
+def charCountFun(str)
+	hash = Hash.new(0)
+	str.each_char{|i| hash[i] += 1}
+	hash.each{|key, value| puts "Le caractere #{key} apparait #{value} fois"}
+end
+charCountFun("portez ce vieux whisky au juge blond qui fume")

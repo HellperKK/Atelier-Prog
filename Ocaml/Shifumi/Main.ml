@@ -5,7 +5,6 @@ let rec correct_choice () = let _ = print_endline "What is your choice ?"
 		match int_of_string (read_line()) with
 		|x when x >= 0 && x <= 2 -> x
 		|x -> raise BadNumber
-		
 	with
 		|Failure "int_of_string" -> let _ = print_endline "You must give an integer." in correct_choice ()
 		|BadNumber -> let _ = print_endline "You must give a number between 0 and 2." in correct_choice ()

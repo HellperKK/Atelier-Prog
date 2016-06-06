@@ -3,3 +3,6 @@ contenu:
 - !ruby/object:Tache
   tache: '"coucou"'
   statut: 0
+- !ruby/object:Tache
+  tache: cache
+  statut: 0
