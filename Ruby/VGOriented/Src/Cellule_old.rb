@@ -1,43 +1,32 @@
-class Point
-	attr_reader :x
-	attr_reader :y
-	def initialize (x=0, y=0)
-		@x = x
-		@y = y
+class CelluleB < Point
+	attr_reader :passable
+	def initialize(x=0, y=0)
+		super(x, y)
+		@passable = true
 	end
-	def update
-		
+	def update(bool)
+		if bool
+			self.swap
+		end
 	end
-	def set_x(x)
-		@x = x
-		return self
-	end
-	def set_y(y)
-		@y = y
-		return self
-	end
-	def set_x_relative(x)
-		@x += x
-		return self
-	end
-	def set_y_relative(y)
-		@y += y
-		return self
+	def swap
+		@passable = ! @passable
 	end
 end
 
-class StaticSprite < Gosu::Image
+class CelluleSprite < StaticSprite
 	attr_accessor	:data
-	def initialize (img, data=Point.new, z=0)
+	def initialize (img, data=CelluleB.new, z=0)
 		super("Assets/Pictures/#{img}.png")
 		@data = data
 		@z = z
 	end
 	def update
-		@data.update
+		@data.update(self.clicked_on?)
 	end
 	def draw
-		super(@data.x, @data.y, @z)
+		sprite = @data.passable ? 0 : 1
+		$tiles[sprite].draw(@data.x, @data.y, 0)
 	end
 	def contientPixel(x, y)
 		x.between?(@data.x, @data.x + self.width) && y.between?(@data.y, @data.y + self.height)

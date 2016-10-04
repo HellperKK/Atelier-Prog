@@ -9,7 +9,10 @@ let read_file_tab chanel =
 		|None -> acc
 		|Some x -> aux (x :: acc)
 	in List.rev (aux [])
+(* Fonction de conversion*)
+let string_of_intb i = String.make 1 (char_of_int i)
 
+(* Fonction principale*)
 let execute chaine = 
 	let rec aux indexb memoireb pointeurb =
 	if indexb = (String.length chaine)
@@ -21,17 +24,19 @@ let execute chaine =
 			| '<' -> if pointeurb > 0 
 				then aux (indexb + 1) memoireb (pointeurb - 1)
 				else aux (indexb + 1) memoireb pointeurb
+			| '.' -> let _ = print_string (string_of_intb memoireb.(pointeurb))
+				in aux (indexb + 1) memoireb pointeurb
 			| _ -> aux (indexb + 1) memoireb pointeurb
-	in aux  0 [0; 0; 0] 0
+	in aux  0 [|0; 0; 0|] 0
 
 let phrase = 
 	if Array.length Sys.argv > 1 
 	then Array.get Sys.argv 1 
 	else "+++++++++++++++++++++++++++++++++++++++++++++++++."
 
-let contenu = 
+let contenu =
 	if Sys.file_exists phrase
 	then String.concat " " (read_file_tab (open_in phrase))
 	else phrase
 
-let _ = String.iter execute contenu
+let _ = execute contenu
