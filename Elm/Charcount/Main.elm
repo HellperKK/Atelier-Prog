@@ -43,7 +43,8 @@ update msg model =
 
 dict_teller dic =
   Dict.toList dic |>
-    List.map (\(key, value) -> div [] [text ("Le caractere " ++ (String.fromChar key) ++ " est present " ++ (toString value) ++ " fois")])
+    List.map (\(key, value) -> div [] [text ("Le caractere "
+      ++ (String.fromChar key) ++ " est present " ++ (toString value) ++ " fois")])
 
 dict_update chaine dic =
   String.foldl (\char dico -> Dict.update char may_increment dico) dic chaine
@@ -61,8 +62,7 @@ may_increment value = case value of
 view : Model -> Html Msg
 view model =
   div []
-    (List.append
-      [ input [ placeholder "Text to reverse", onInput Change] []
+    ([ input [ placeholder "Texte a entrer", onInput Change] []
       , Html.br [][]
       ]
-      (dict_teller model.dico))
+      ++ (dict_teller model.dico))
