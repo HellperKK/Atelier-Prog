@@ -5,7 +5,6 @@ import String
 import Dict
 
 
-
 main =
   Html.beginnerProgram
     { model = model
@@ -14,32 +13,24 @@ main =
     }
 
 
-
 -- MODEL
-
-
 type alias Model =
-  { content : String
-  , dico : Dict.Dict Char Int
-  }
+  {dico : Dict.Dict Char Int}
 
 
 model : Model
-model = {content = "", dico = Dict.empty}
+model = {dico = Dict.empty}
 
 
 
 -- UPDATE
-
-
 type Msg
   = Change String
 
 update : Msg -> Model -> Model
 update msg model =
   case msg of
-    Change newContent -> {content = newContent, dico = dict_update newContent Dict.empty}
-
+    Change newContent -> {dico = dict_update newContent Dict.empty}
 
 dict_teller dic =
   Dict.toList dic |>
@@ -57,8 +48,6 @@ may_increment value = case value of
 
 
 -- VIEW
-
-
 view : Model -> Html Msg
 view model =
   div []
