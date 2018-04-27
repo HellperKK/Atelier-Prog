@@ -47,7 +47,7 @@ type P_Code
   | Decrement
   | Print
   | Input
-  | Loop List P_Code
+  | Loop List (Result String P_Code)
 
 update : Msg -> Model -> Model
 update msg model =
@@ -62,6 +62,7 @@ interpret code entry =
   in
     code
 
+parse : String -> List (Result String P_Code)
 parse code =
   let
     aux acc new_str =
@@ -73,10 +74,25 @@ parse code =
         Just ('-', tl) -> aux (Decrement :: acc) tl
         Just ('.', tl) -> aux (Print :: acc) tl
         Just (',', tl) -> aux (Input :: acc) tl
-        Just ('[', tl) -> aux (Input :: acc) tl
+        Just ('[', tl) -> case get_loop tl of
+          Nothing -> Err "Missing end loop"
+          Just x -> aux ((Loop (parse (String.left x tl))) :: acc) tl
         Just (_, tl) -> aux acc tl
   in
     aux [] code
+
+get_loop str =
+  let
+    aux i counter new_str =
+      case (String.uncons new_str, counter) of
+        (Nothing, _) -> Nothing
+        (Just (']', _), 0) -> Just i
+        (Just (']', tl), _) -> aux (i+1) (counter-1) tl
+        (Just ('[', tl), _) -> aux (i+1) (counter+1) tl
+        (Just (_, tl), _) -> aux (i+1) counter tl
+  in
+    aux 0 0 str
+
 
 may_increment arr index =
   case Array.get index arr of
@@ -95,9 +111,13 @@ may_decrement arr index =
 view : Model -> Html.Html Msg
 view model =
   Html.div []
-      [ Html.text model.output
+      [ Html.text ("Output : " ++ model.output)
+      , Html.br [] []
+      , Html.text "Code"
       , Html.br [] []
       , Html.textarea [Html.Events.onInput Update_code] []
+      , Html.br [] []
+      , Html.text "Entree"
       , Html.br [] []
       , Html.textarea [Html.Events.onInput Update_entry] []
       , Html.br [] []
