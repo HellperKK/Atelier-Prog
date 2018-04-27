@@ -47,7 +47,7 @@ type P_Code
   | Decrement
   | Print
   | Input
-  | Loop List (Result String P_Code)
+  | Loop Result String (List P_Code)
 
 update : Msg -> Model -> Model
 update msg model =
@@ -62,24 +62,29 @@ interpret code entry =
   in
     code
 
-parse : String -> List (Result String P_Code)
+parse : String ->  Result String (List P_Code)
 parse code =
   let
     aux acc new_str =
       case String.uncons new_str of
-        Nothing -> acc
+        Nothing -> Ok acc
         Just ('>', tl) -> aux (Move_Right :: acc) tl
         Just ('<', tl) -> aux (Move_Left :: acc) tl
         Just ('+', tl) -> aux (Increment :: acc) tl
         Just ('-', tl) -> aux (Decrement :: acc) tl
         Just ('.', tl) -> aux (Print :: acc) tl
         Just (',', tl) -> aux (Input :: acc) tl
-        Just ('[', tl) -> case get_loop tl of
-          Nothing -> Err "Missing end loop"
-          Just x -> aux ((Loop (parse (String.left x tl))) :: acc) tl
+        -- Just ('[', tl) -> aux (Loop temp :: acc) tl
         Just (_, tl) -> aux acc tl
   in
     aux [] code
+
+make_loop str = case get_loop str of
+  Nothing -> Err "Missing end loop"
+  Just x -> let
+    temp = parse (String.left x tl)
+  in
+
 
 get_loop str =
   let
