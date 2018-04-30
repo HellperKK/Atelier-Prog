@@ -5,7 +5,7 @@ import String
 import Dict
 import Random
 import Array
-
+import Char
 
 main =
   Html.beginnerProgram
@@ -15,10 +15,7 @@ main =
     }
 
 
-
 -- MODEL
-
-
 type alias Model =
   { code : String
   , entry : String
@@ -31,7 +28,6 @@ model = { code = ""
         , entry = ""
         , output = ""
         }
-
 
 
 -- UPDATE
@@ -47,7 +43,7 @@ type P_Code
   | Decrement
   | Print
   | Input
-  | Loop Result String (List P_Code)
+  | Loop (List P_Code)
 
 update : Msg -> Model -> Model
 update msg model =
@@ -60,31 +56,28 @@ interpret code entry =
   let
     pseudo_code = parse code
   in
-    code
+    run pseudo_code
 
-parse : String ->  Result String (List P_Code)
 parse code =
   let
     aux acc new_str =
       case String.uncons new_str of
-        Nothing -> Ok acc
+        Nothing -> acc
         Just ('>', tl) -> aux (Move_Right :: acc) tl
         Just ('<', tl) -> aux (Move_Left :: acc) tl
         Just ('+', tl) -> aux (Increment :: acc) tl
         Just ('-', tl) -> aux (Decrement :: acc) tl
         Just ('.', tl) -> aux (Print :: acc) tl
         Just (',', tl) -> aux (Input :: acc) tl
-        -- Just ('[', tl) -> aux (Loop temp :: acc) tl
+        Just ('[', tl) ->
+          let (temp, tempb) = case get_loop tl of
+            Nothing -> (tl, "")
+            Just x -> (String.left x tl, String.dropLeft (x+1) tl)
+          in
+            aux ((Loop (parse temp)) :: acc) tempb
         Just (_, tl) -> aux acc tl
   in
     aux [] code
-
-make_loop str = case get_loop str of
-  Nothing -> Err "Missing end loop"
-  Just x -> let
-    temp = parse (String.left x tl)
-  in
-
 
 get_loop str =
   let
@@ -96,8 +89,42 @@ get_loop str =
         (Just ('[', tl), _) -> aux (i+1) (counter+1) tl
         (Just (_, tl), _) -> aux (i+1) counter tl
   in
-    aux 0 0 str
+    List.reverse (aux 0 0 str)
 
+-- run code entry =
+--   let
+--     aux new_code new_entry output pointeur tableau = case new_code of
+--       [] -> output
+--       Move_Right :: tl ->
+--         let new_pointeur = if pointeur < 127 then pointeur + 1 else pointeur
+--         in aux tl entry output new_pointeur tableau
+--       Move_Left :: tl ->
+--         let new_pointeur = if pointeur > 0 then pointeur - 1 else pointeur
+--         in aux tl entry output new_pointeur tableau
+--       Increment :: tl ->
+--         let new_tableau = may_increment tableau pointeur
+--         in aux tl entry output pointeur new_tableau
+--       Decrement :: tl ->
+--         let new_tableau = may_decrement tableau pointeur
+--         in aux tl entry output pointeur new_tableau
+--       Print :: tl ->
+--         let new_output = String.cons (Char.fromCode (may_get tableau pointeur)) output
+--         in aux tl entry new_output pointeur tableau
+--       Input :: tl ->
+--         let (new_tableau, new_entry) = case String.uncons entry of
+--           Nothing -> (Array.set pointeur 49 tableau, "")
+--           Just (chr, str) -> (Array.set pointeur (Char.toCode chr) tableau, str)
+--         in aux tl new_entry output pointeur new_tableau
+--       (Loop tab) :: tl ->
+--         let
+--           runing = case Array.get pointeur tableau of
+--             Nothing -> False
+--             Just x -> x == 0
+--           (new_code, new_output) = if runing then (code, String.reverse (run tab)) else (tl, "")
+--         in
+--           aux new_code entry (new_output ++ output) pointeur tableau
+--   in
+--       String.reverse (aux code entry "" 0 (Array.repeat 128 0))
 
 may_increment arr index =
   case Array.get index arr of
@@ -109,10 +136,13 @@ may_decrement arr index =
     Just x -> Array.set index (x-1) arr
     Nothing -> arr
 
+may_get arr index =
+  case Array.get index arr of
+    Just x -> x
+    Nothing -> 49
+
 
 -- VIEW
-
-
 view : Model -> Html.Html Msg
 view model =
   Html.div []
