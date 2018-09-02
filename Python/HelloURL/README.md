@@ -1,8 +1,8 @@
-# Jeu de la vie en python
-Un jeu de la vie utilisant les liste en compréhension.
+# Hello app via url
+Une page qui salut le visiteur quand il donne son nom sous la forme /hello/nom
 
-#Utilisation
-Utiliser la commande :
-> Python JeuDeLaVie.py
+# Utilisation
+Necessite python3.x et flask 3
+```python3 app.py```
 
-Un grille sera générée aléatoirement et chaque frame s'affhichera en pressant la touche espace à répétition.
+Puis se rendre Ã  l'adresse `http://0.0.0.0:5000/hello/nom`
