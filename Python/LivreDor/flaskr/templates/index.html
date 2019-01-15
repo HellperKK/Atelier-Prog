@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Ajouter</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Nom</label>
+    <input name="name" id="name" value="" required>
+    <label for="body">Message</label>
+    <textarea name="body" id="body"></textarea>
+    <input type="submit" value="Envoyer">
+  </form>
+  <h1>{% block title %}Messages{% endblock %}</h1>
+  {% for post in posts %}
+    <article class="post">
+      <header>
+        <div>
+          <div class="about">par {{ post['author_name'] }} le {{ post['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+      </header>
+      <p class="body">{{ post['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
