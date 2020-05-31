@@ -1,6 +1,5 @@
 # Interpreteur brainfuck
 Un interpreteur brainfuck en PHP.
-[Voici une demo](http://kustomskromatiks.byethost17.com/Experiences/Brainfuck.php)
 (Utilise l'attribut required non compatible avec Safari)
 
-À noter aussi que l'instruction ',' n'a pas été implémentée.
+ï¿½ noter aussi que l'instruction ',' n'a pas ï¿½tï¿½ implï¿½mentï¿½e.
