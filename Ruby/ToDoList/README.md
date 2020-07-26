@@ -1,6 +1,6 @@
 # Todolist-ruby
 Une todolist en ruby
 
-#Utilisation
+# Utilisation
 Utiliser la commande :
 > [ruby] Main.rb

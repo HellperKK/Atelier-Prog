@@ -1,6 +1,6 @@
 # Charcount en ruby
-Un compteur de caractères en ruby.
+Un compteur de caractï¿½res en ruby.
 
-#Utilisation
+# Utilisation
 Utiliser la commande :
 > [ruby] Charcount.rb

@@ -1,6 +1,6 @@
 # NPI en python
 Simple NPI en python.
 
-#Utilisation
+# Utilisation
 Utiliser la commande :
 > Python NPI.py

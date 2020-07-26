@@ -1,6 +1,6 @@
 # Charcount-python
 Simple Charcount en python.
 
-#Utilisation
+# Utilisation
 Utiliser la commande :
 > Python Charcount.py

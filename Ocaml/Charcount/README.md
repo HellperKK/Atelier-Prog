@@ -1,7 +1,7 @@
 # Charcount Ocaml
 A simple todo liste in ocaml.
 
-#How to use
+# How to use
 Launch the program with this command :
 > ocaml Mains.ml "my sentence here"
 

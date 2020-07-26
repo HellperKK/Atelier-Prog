@@ -1,6 +1,6 @@
 # Charcount en elixir
-Un compteur de caractères en elixir.
+Un compteur de caractï¿½res en elixir.
 
-#Utilisation
+# Utilisation
 Utiliser la commande :
 > elixir Charcount.ex
