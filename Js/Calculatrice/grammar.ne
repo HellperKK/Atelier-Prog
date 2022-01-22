@@ -31,6 +31,11 @@ const callFun = (name, args) => {
 }
 
 const lexer = moo.compile({
+
+  // tokens
+  decimal: /-?\d+(?:\.\d+)?/,
+  ident: /[A-Za-z][A-Za-z0-9]*/,
+  
   // symbols
   plus: "+",
   minus: "-",
@@ -39,10 +44,6 @@ const lexer = moo.compile({
   divide: "/",
   modulo: "%",
   comma: ",",
-
-  // tokens
-  decimal: /\d+(?:\.\d+)?/,
-  ident: /[A-Za-z][A-Za-z0-9]*/,
 
   // group symbols
   openPar: /\(/,
