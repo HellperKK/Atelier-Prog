@@ -7,7 +7,24 @@ Une calculatrice en js basée sur le tokenizer moojs et le parser nearley. L'exp
 
 Placer l'espression dans le champ à gauche puis lancer l'évaluation pour voir le résultat à droite.
 
+Il est possible d'utiliser des fonctions dans la liste suivante :
+
+- factorial
+- random
+- abs
+- ceil
+- floor
+- round
+- sqrt
+- pow
+- log
+- log10
+- randomRange
+
 
 ## Compilation
 
-La compilation du fichier grammar.ne nécessite le compilateur nearleyc (eg `npm install -g nearley c`). Faire ensuite `narleyc -o grammar.js grammar.ne`
+```
+npm install -g nearley c
+narleyc -o grammar.js grammar.ne
+```

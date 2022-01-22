@@ -16,13 +16,13 @@ const funs = {
 
         random: Math.random,
         abs: Math.abs,
-        ceil: Math.abs,
-        floor: Math.abs,
-        round: Math.abs,
-        sqrt: Math.abs,
-        pow: Math.abs,
-        log: Math.abs,
-        log10: Math.abs,
+        ceil: Math.ceil,
+        floor: Math.floor,
+        round: Math.round,
+        sqrt: Math.sqrt,
+        pow: Math.pow,
+        log: Math.log,
+        log10: Math.log10,
         randomRange: (min, max) => min + (Math.random() * (max - min))
 }
 
@@ -46,7 +46,7 @@ const lexer = moo.compile({
 
   // tokens
   decimal: /\d+(?:\.\d+)?/,
-  ident: /[A-Za-z]+/,
+  ident: /[A-Za-z][A-Za-z0-9]*/,
 
   // group symbols
   openPar: /\(/,
