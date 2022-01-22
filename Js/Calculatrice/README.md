@@ -7,7 +7,7 @@ Une calculatrice en js basée sur le tokenizer moojs et le parser nearley. L'exp
 
 Placer l'espression dans le champ à gauche puis lancer l'évaluation pour voir le résultat à droite.
 
-Il est possible d'utiliser des fonctions dans la liste suivante :
+Il est possible d'utiliser des fonctions (eg `abs(-42)`) dans la liste suivante :
 
 - factorial
 - random
@@ -23,6 +23,14 @@ Il est possible d'utiliser des fonctions dans la liste suivante :
 
 
 ## Compilation
+
+```
+npm install -g nearley c
+narleyc -o grammar.js grammar.ne
+```
+
+
+## Exemples
 
 ```
 npm install -g nearley c
