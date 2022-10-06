@@ -1,3 +1,4 @@
+import haxe.io.Bytes;
 import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
@@ -13,7 +14,7 @@ class Main {
 		var socket = new Socket();
 		socket.bind(new Host("localhost"), PORT);
 		socket.listen(100);
-		socket.setTimeout(300);
+		socket.setTimeout(300000);
 		Sys.println('open our browser to localhost:${PORT}');
 
 		while (true) {
@@ -26,11 +27,42 @@ class Main {
 
 				var response = manageRoute(data[1]);
 
+				var chuncks = makeBytesChuncks(response, 256);
+
 				client.output.prepare(response.length);
-				client.output.write(response);
+				for (chunck in chuncks) {
+					client.output.write(chunck);
+				}
+
 				client.shutdown(true, true);
 			} catch (e:Dynamic) {}
 		}
+	}
+
+	public static function getBytesContent(filePath:String) {
+		var size = FileSystem.stat(filePath).size;
+		var fileInput = File.read(filePath, true);
+		var bytes = fileInput.read(size);
+		fileInput.close();
+		return bytes;
+	}
+
+	public static function makeBytesChuncks(bytes:Bytes, size:Int) {
+		var chuncksNumber = Math.floor(bytes.length / size);
+		var remains = bytes.length - chuncksNumber * size;
+
+		var chuncks:Array<Bytes> = [];
+
+		for (pos in 0...chuncksNumber) {
+			var truePos = pos * size;
+			chuncks.push(bytes.sub(truePos, size));
+		}
+
+		if (remains > 0) {
+			chuncks.push(bytes.sub(chuncksNumber * size, remains));
+		}
+
+		return chuncks;
 	}
 
 	public static function manageRoute(route:String) {
@@ -63,7 +95,8 @@ class Main {
 
 		return switch (fileExtenston.toLowerCase()) {
 			case "html": Response.ok(File.getContent(file));
-			case "png": Response.okBytes(File.getBytes(file), "image/png");
+			case "png": Response.okBytes(getBytesContent(file), "image/png");
+			case "jpg" | "jpeg": Response.okBytes(getBytesContent(file), "image/jpg");
 			case _: Response.ok(File.getContent(file), "text/plain");
 		};
 	}
