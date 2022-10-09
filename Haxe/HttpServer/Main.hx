@@ -1,3 +1,4 @@
+import haxe.Json;
 import haxe.io.Bytes;
 import haxe.io.Path;
 import sys.FileSystem;
@@ -6,6 +7,7 @@ import sys.net.Host;
 import sys.net.Socket;
 
 using StringTools;
+using Lambda;
 
 class Main {
 	public static var PORT = 8080;
@@ -93,11 +95,12 @@ class Main {
 	public static function getFile(file:String) {
 		var fileExtenston = Path.extension(file);
 
-		return switch (fileExtenston.toLowerCase()) {
-			case "html": Response.ok(File.getContent(file));
-			case "png": Response.okBytes(getBytesContent(file), "image/png");
-			case "jpg" | "jpeg": Response.okBytes(getBytesContent(file), "image/jpg");
-			case _: Response.ok(File.getContent(file), "text/plain");
-		};
+		var extensions:Array<MimeData> = Json.parse(File.getContent("./mimes.json"));
+
+		var mime = extensions.find(extension -> extension.extention == fileExtenston);
+
+		var trueMime = if (mime == null) "text/plain" else mime.mime;
+
+		return Response.okBytes(getBytesContent(file), trueMime);
 	}
 }

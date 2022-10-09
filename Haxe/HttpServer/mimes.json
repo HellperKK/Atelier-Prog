@@ -1,0 +1,302 @@
+[
+    {
+        "extention": "aac",
+        "mime": "audio/aac"
+    },
+    {
+        "extention": "abw",
+        "mime": "application/x-abiword"
+    },
+    {
+        "extention": "ai",
+        "mime": "application/postscript"
+    },
+    {
+        "extention": "arc",
+        "mime": "application/octet-stream"
+    },
+    {
+        "extention": "avi",
+        "mime": "video/x-msvideo"
+    },
+    {
+        "extention": "azw",
+        "mime": "application/vnd.amazon.ebook"
+    },
+    {
+        "extention": "bin",
+        "mime": "application/octet-stream"
+    },
+    {
+        "extention": "bz",
+        "mime": "application/x-bzip"
+    },
+    {
+        "extention": "bz2",
+        "mime": "application/x-bzip2"
+    },
+    {
+        "extention": "csh",
+        "mime": "application/x-csh"
+    },
+    {
+        "extention": "css",
+        "mime": "text/css"
+    },
+    {
+        "extention": "csv",
+        "mime": "text/csv"
+    },
+    {
+        "extention": "doc",
+        "mime": "application/msword"
+    },
+    {
+        "extention": "dll",
+        "mime": "application/octet-stream"
+    },
+    {
+        "extention": "eot",
+        "mime": "application/vnd.ms-fontobject"
+    },
+    {
+        "extention": "epub",
+        "mime": "application/epub+zip"
+    },
+    {
+        "extention": "gif",
+        "mime": "image/gif"
+    },
+    {
+        "extention": "htm",
+        "mime": "text/html"
+    },
+    {
+        "extention": "html",
+        "mime": "text/html"
+    },
+    {
+        "extention": "ico",
+        "mime": "image/x-icon"
+    },
+    {
+        "extention": "ics",
+        "mime": "text/calendar"
+    },
+    {
+        "extention": "jar",
+        "mime": "application/java-archive"
+    },
+    {
+        "extention": "jpeg",
+        "mime": "image/jpeg"
+    },
+    {
+        "extention": "jpg",
+        "mime": "image/jpeg"
+    },
+    {
+        "extention": "js",
+        "mime": "application/javascript"
+    },
+    {
+        "extention": "json",
+        "mime": "application/json"
+    },
+    {
+        "extention": "mid",
+        "mime": "audio/midi"
+    },
+    {
+        "extention": "midi",
+        "mime": "audio/midi"
+    },
+    {
+        "extention": "mp2",
+        "mime": "audio/mpeg"
+    },
+    {
+        "extention": "mp3",
+        "mime": "audio/mpeg"
+    },
+    {
+        "extention": "mp4",
+        "mime": "video/mp4"
+    },
+    {
+        "extention": "mpa",
+        "mime": "video/mpeg"
+    },
+    {
+        "extention": "mpe",
+        "mime": "video/mpeg"
+    },
+    {
+        "extention": "mpeg",
+        "mime": "video/mpeg"
+    },
+    {
+        "extention": "mpkg",
+        "mime": "application/vnd.apple.installer+xml"
+    },
+    {
+        "extention": "odp",
+        "mime": "application/vnd.oasis.opendocument.presentation"
+    },
+    {
+        "extention": "ods",
+        "mime": "application/vnd.oasis.opendocument.spreadsheet"
+    },
+    {
+        "extention": "odt",
+        "mime": "application/vnd.oasis.opendocument.text"
+    },
+    {
+        "extention": "oga",
+        "mime": "audio/ogg"
+    },
+    {
+        "extention": "ogv",
+        "mime": "video/ogg"
+    },
+    {
+        "extention": "ogx",
+        "mime": "application/ogg"
+    },
+    {
+        "extention": "otf",
+        "mime": "font/otf"
+    },
+    {
+        "extention": "png",
+        "mime": "image/png"
+    },
+    {
+        "extention": "pdf",
+        "mime": "application/pdf"
+    },
+    {
+        "extention": "ppt",
+        "mime": "application/vnd.ms-powerpoint"
+    },
+    {
+        "extention": "rar",
+        "mime": "application/x-rar-compressed"
+    },
+    {
+        "extention": "rtf",
+        "mime": "application/rtf"
+    },
+    {
+        "extention": "sh",
+        "mime": "application/x-sh"
+    },
+    {
+        "extention": "svg",
+        "mime": "image/svg+xml"
+    },
+    {
+        "extention": "swf",
+        "mime": "application/x-shockwave-flash"
+    },
+    {
+        "extention": "tar",
+        "mime": "application/x-tar"
+    },
+    {
+        "extention": "tif",
+        "mime": "image/tiff"
+    },
+    {
+        "extention": "tiff",
+        "mime": "image/tiff"
+    },
+    {
+        "extention": "ts",
+        "mime": "application/typescript"
+    },
+    {
+        "extention": "ttf",
+        "mime": "font/ttf"
+    },
+    {
+        "extention": "txt",
+        "mime": "text/plain"
+    },
+    {
+        "extention": "vsd",
+        "mime": "application/vnd.visio"
+    },
+    {
+        "extention": "wav",
+        "mime": "audio/x-wav"
+    },
+    {
+        "extention": "weba",
+        "mime": "audio/webm"
+    },
+    {
+        "extention": "webm",
+        "mime": "video/webm"
+    },
+    {
+        "extention": "webp",
+        "mime": "image/webp"
+    },
+    {
+        "extention": "woff",
+        "mime": "font/woff"
+    },
+    {
+        "extention": "woff2",
+        "mime": "font/woff2"
+    },
+    {
+        "extention": "xhtml",
+        "mime": "application/xhtml+xml"
+    },
+    {
+        "extention": "xls",
+        "mime": "application/vnd.ms-excel"
+    },
+    {
+        "extention": "xlsx",
+        "mime": "application/vnd.ms-excel"
+    },
+    {
+        "extention": "xlsx_OLD",
+        "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    },
+    {
+        "extention": "xml",
+        "mime": "application/xml"
+    },
+    {
+        "extention": "xul",
+        "mime": "application/vnd.mozilla.xul+xml"
+    },
+    {
+        "extention": "zip",
+        "mime": "application/zip"
+    },
+    {
+        "extention": "3gp",
+        "mime": "video/3gpp"
+    },
+    {
+        "extention": "3gp_DOES_NOT_CONTAIN_VIDEO",
+        "mime": "audio/3gpp"
+    },
+    {
+        "extention": "3gp2",
+        "mime": "video/3gpp2"
+    },
+    {
+        "extention": "3gp2_DOES_NOT_CONTAIN_VIDEO",
+        "mime": "audio/3gpp2"
+    },
+    {
+        "extention": "7z",
+        "mime": "application/x-7z-compressed"
+    }
+]
