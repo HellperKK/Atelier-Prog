@@ -18,3 +18,6 @@ Vous pourrez alors vous connecter à localhost:8080 pour voir les fichiers relat
 ```
 haxe build.hxml
 ```
+
+## Credit
+Le json pour les types mimes vient initialement de [ce gist](https://gist.github.com/lsauer/5196979), que j'ai ensuite modifié.
